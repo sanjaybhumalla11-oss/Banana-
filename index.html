@@ -329,6 +329,45 @@
         alert(message);
     }
 </script>
+    <h2>Available Vehicles</h2>
+<div id="vehicle-list">Loading vehicles...</div>
+
+<script>
+async function loadVehicles() {
+    try {
+        const response = await fetch(
+            "YOUR_BACKEND_URL/vehicles"
+        );
+
+        if (!response.ok) {
+            throw new Error("Could not load vehicles");
+        }
+
+        const vehicles = await response.json();
+        const list = document.getElementById("vehicle-list");
+
+        list.innerHTML = "";
+
+        vehicles.forEach(vehicle => {
+            const card = document.createElement("div");
+            const name = document.createElement("h3");
+            const price = document.createElement("p");
+
+            name.textContent = vehicle.name;
+            price.textContent =
+                "Price: ₹" + vehicle.price.toLocaleString("en-IN");
+
+            card.append(name, price);
+            list.appendChild(card);
+        });
+    } catch (error) {
+        document.getElementById("vehicle-list").textContent =
+            "Unable to load vehicles. Please try again later.";
+    }
+}
+
+loadVehicles();
+    </script>
 
 </body>
   </html>
