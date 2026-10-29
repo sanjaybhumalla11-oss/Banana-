@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoMart - Online Vehicle Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            color: #222;
+        }
+
+        header {
+            background: #102542;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        nav {
+            background: #e63946;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: #dceaf7;
+            padding: 30px 15px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            color: #102542;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 450px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .vehicle-list {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .vehicle-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px #0002;
+            text-align: center;
+            padding-bottom: 18px;
+        }
+
+        .vehicle-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        .vehicle-card h3 {
+            margin: 12px 5px;
+        }
+
+        .price {
+            color: #e63946;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .details {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #102542;
+            color: white;
+            padding: 10px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #e63946;
+        }
+
+        .contact {
+            background: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #102542;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                display: inline-block;
+                margin: 6px;
+            }
+
+            header h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚗 AutoMart</h1>
+    <p>Your Online Vehicle Selling Store</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#cars">Cars</a>
+    <a href="#bikes">Bikes</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Find Your Dream Vehicle!</h2>
+    <p>Explore cars and bikes at affordable prices.</p>
+
+    <input
+        type="text"
+        class="search-box"
+        id="search"
+        placeholder="Search cars or bikes..."
+        oninput="searchVehicles()"
+    >
+</section>
+
+<div class="container">
+
+    <section id="cars">
+        <h2>🚘 Cars for Sale</h2>
+
+        <div class="vehicle-list">
+
+            <div class="vehicle-card">
+                <img
+                    src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=600&q=80"
+                    alt="Ford Mustang car"
+                >
+                <h3>Ford Mustang</h3>
+                <p class="details">Petrol | Automatic</p>
+                <p class="price">₹ 75,00,000</p>
+                <button class="button"
+                    onclick="buyVehicle('Ford Mustang', '75,00,000')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="vehicle-card">
+                <img
+                    src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80"
+                    alt="Chevrolet sports car"
+                >
+                <h3>Chevrolet Camaro</h3>
+                <p class="details">Petrol | Automatic</p>
+                <p class="price">₹ 65,00,000</p>
+                <button class="button"
+                    onclick="buyVehicle('Chevrolet Camaro', '65,00,000')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="vehicle-card">
+                <img
+                    src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?auto=format&fit=crop&w=600&q=80"
+                    alt="White car"
+                >
+                <h3>Premium Sedan</h3>
+                <p class="details">Petrol | Manual</p>
+                <p class="price">₹ 12,00,000</p>
+                <button class="button"
+                    onclick="buyVehicle('Premium Sedan', '12,00,000')">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="bikes">
+        <h2>🏍️ Bikes for Sale</h2>
+
+        <div class="vehicle-list">
+
+            <div class="vehicle-card">
+                <img
+                    src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80"
+                    alt="Motorcycle"
+                >
+                <h3>Royal Enfield Classic 350</h3>
+                <p class="details">350cc | Petrol</p>
+                <p class="price">₹ 2,00,000</p>
+                <button class="button"
+                    onclick="buyVehicle('Royal Enfield Classic 350', '2,00,000')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="vehicle-card">
+                <img
+                    src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80"
+                    alt="Sports motorcycle"
+                >
+                <h3>Sports Bike</h3>
+                <p class="details">150cc | Petrol</p>
+                <p class="price">₹ 1,50,000</p>
+                <button class="button"
+                    onclick="buyVehicle('Sports Bike', '1,50,000')">
+                    Buy Now
+                </button>
+            </div>
+
+            <div class="vehicle-card">
+                <img
+                    src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=600&q=80"
+                    alt="Black motorcycle"
+                >
+                <h3>Premium Motorcycle</h3>
+                <p class="details">200cc | Petrol</p>
+                <p class="price">₹ 1,80,000</p>
+                <button class="button"
+                    onclick="buyVehicle('Premium Motorcycle', '1,80,000')">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>📞 Contact Us</h2>
+        <p>Interested in buying a vehicle?</p>
+        <p>Contact our sales team for more information.</p>
+
+        <a class="button"
+           href="mailto:automart@example.com?subject=Vehicle%20Enquiry">
+            Email Seller
+        </a>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 AutoMart | Online Vehicle Selling Website</p>
+    <p>Created using HTML, CSS and JavaScript</p>
+</footer>
+
+<script>
+    function searchVehicles() {
+        const input = document
+            .getElementById("search")
+            .value.toLowerCase();
+
+        const vehicles = document.querySelectorAll(".vehicle-card");
+
+        vehicles.forEach(function(vehicle) {
+            const name = vehicle
+                .querySelector("h3")
+                .textContent.toLowerCase();
+
+            vehicle.style.display =
+                name.includes(input) ? "" : "none";
+        });
+    }
+
+    function buyVehicle(name, price) {
+        const message =
+            "Vehicle: " + name +
+            "\nPrice: ₹" + price +
+            "\n\nThis is a demonstration website. " +
+            "No purchase or payment has been made.";
+
+        alert(message);
+    }
+</script>
+
+</body>
+  </html>
